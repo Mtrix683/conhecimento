@@ -1,0 +1,61 @@
+﻿@model List<AvaliacaoTecnica.Models.Produto>
+
+<h2 class="mb-4">Lista de Produtos</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Criar Novo Produto</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Descricao</td>
+                    <td>@item.Preco</td>
+
+                    <td>
+                        @{
+                            string nomeCategoria = "";
+
+                            if (item.CategoriaId == 1)
+                                nomeCategoria = "Alimento";
+                            else if (item.CategoriaId == 2)
+                                nomeCategoria = "Eletrônico";
+                            else if (item.CategoriaId == 3)
+                                nomeCategoria = "Bazar";
+                            else if (item.CategoriaId == 4)
+                                nomeCategoria = "Roupa";
+                        }
+
+                        @nomeCategoria
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    Nenhum produto cadastrado
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
