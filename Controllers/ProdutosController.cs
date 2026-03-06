@@ -1,40 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AvaliacaoTecnica.Models;
+using AvaliacaoTecnica.Data;
 
 namespace AvaliacaoTecnica.Controllers
 {
     public class ProdutosController : Controller
     {
-        private static List<Produto> lista = new List<Produto>
-        {
-            new Produto { Id = 1, Nome = "Notebook", Descricao = "Dell", Preco = 3500, CategoriaId = 2 },
-            new Produto { Id = 2, Nome = "Mouse", Descricao = "Logitech", Preco = 150, CategoriaId = 2 }
-        };
+        private readonly AppDbContext _context;
 
-        private static List<Categoria> categorias = new List<Categoria>
+        public ProdutosController(AppDbContext context)
         {
-            new Categoria { Id = 1, Nome = "Alimento" },
-            new Categoria { Id = 2, Nome = "Eletrônico" },
-            new Categoria { Id = 3, Nome = "Bazar" },
-            new Categoria { Id = 4, Nome = "Roupa" }
-        };
+            _context = context;
+        }
 
         public IActionResult Index()
         {
-            return View(lista);
+            var produtos = _context.Produtos.ToList();
+            return View(produtos);
         }
 
         public IActionResult Create()
         {
-            ViewBag.Categorias = categorias;
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Produto produto)
         {
-            produto.Id = lista.Max(p => p.Id) + 1;
-            lista.Add(produto);
+            _context.Produtos.Add(produto);
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
         }

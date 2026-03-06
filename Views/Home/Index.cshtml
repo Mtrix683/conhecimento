@@ -17,34 +17,18 @@
         </tr>
     </thead>
     <tbody>
-
-@if (Model != null)
-{
-    foreach (var item in Model)
-    {            <tr>
-                <td>@item.Id</td>
-                <td>@item.Nome</td>
-                <td>@item.Descricao</td>
-                <td>@item.Preco</td>
-
-                <td>
-                    @{
-                        string nomeCategoria = "";
-
-                        if (item.CategoriaId == 1)
-                            nomeCategoria = "Alimento";
-                        else if (item.CategoriaId == 2)
-                            nomeCategoria = "Eletrônico";
-                        else if (item.CategoriaId == 3)
-                            nomeCategoria = "Bazar";
-                        else if (item.CategoriaId == 4)
-                            nomeCategoria = "Roupa";
-                    }
-
-                    @nomeCategoria
-                </td>
-            </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Descricao</td>
+                    <td>@item.Preco</td>
+                    <td>@item.Categoria</td>
+                </tr>
+            }
         }
-    }
     </tbody>
 </table>

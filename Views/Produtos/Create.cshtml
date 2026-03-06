@@ -22,11 +22,11 @@
     <div class="mb-3">
         <label class="form-label">Categoria</label>
 
-        <select asp-for="CategoriaId" class="form-control">
-            @foreach (var cat in ViewBag.Categorias as List<AvaliacaoTecnica.Models.Categoria>)
-            {
-                <option value="@cat.Id">@cat.Nome</option>
-            }
+        <select asp-for="Categoria" class="form-control">
+            <option value="Alimento">Alimento</option>
+            <option value="Eletrônico">Eletrônico</option>
+            <option value="Bazar">Bazar</option>
+            <option value="Roupa">Roupa</option>
         </select>
 
     </div>
