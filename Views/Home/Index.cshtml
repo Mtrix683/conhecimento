@@ -1,34 +1,20 @@
-﻿@model List<AvaliacaoTecnica.Models.Produto>
+﻿<div class="text-center mt-5">
 
-<h2 class="mb-4">Lista de Produtos</h2>
+    <h1>Bem-vindo ao Sistema de Produtos</h1>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Criar Novo Produto</a>
-</p>
+    <p>Este sistema permite cadastrar e gerenciar produtos.</p>
 
-<table class="table table-striped table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-            <th>Categoria</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null)
-        {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Nome</td>
-                    <td>@item.Descricao</td>
-                    <td>@item.Preco</td>
-                    <td>@item.Categoria</td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
+    <hr />
+
+    <h4>Como usar o sistema:</h4>
+
+    <p>1. Clique no menu <strong>Produtos</strong> no topo.</p>
+    <p>2. Clique em <strong>Criar Novo Produto</strong>.</p>
+    <p>3. Preencha os dados do produto.</p>
+    <p>4. Salve para aparecer na lista.</p>
+
+    <a class="btn btn-primary mt-3" asp-controller="Produtos" asp-action="Index">
+        Ir para Produtos
+    </a>
+
+</div>
