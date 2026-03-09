@@ -13,6 +13,8 @@ namespace AvaliacaoTecnica.Models
 
         public decimal Preco { get; set; }
 
-        public string Categoria { get; set; }
+        public int CategoriaId { get; set; }
+
+        public Categoria Categoria { get; set; }
     }
 }

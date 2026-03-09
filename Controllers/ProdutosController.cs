@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AvaliacaoTecnica.Models;
 using AvaliacaoTecnica.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace AvaliacaoTecnica.Controllers
 {
@@ -21,6 +22,7 @@ namespace AvaliacaoTecnica.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Categorias = _context.Categorias.ToList();
             return View();
         }
 
